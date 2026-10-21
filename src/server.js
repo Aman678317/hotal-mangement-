@@ -14,6 +14,27 @@ async function main() {
   await assertDatabaseReachable();
   console.log("[database] PostgreSQL connection verified.");
 
+  // If connected to a database, ensure migrations and initial demo data are present
+  try {
+    const userCount = await prisma.user.count().catch(() => null);
+    if (userCount === null) {
+      console.log("[database] Tables not found — applying migrations...");
+      const { execSync } = await import("child_process");
+      execSync("npx prisma migrate deploy", { stdio: "inherit" });
+      console.log("[database] Migrations applied.");
+    }
+
+    const countAfter = await prisma.user.count().catch(() => 0);
+    if (countAfter === 0 && (process.env.SEED_DEMO_USERS === "true" || process.env.NODE_ENV !== "production")) {
+      console.log("[database] Database empty — seeding initial demo data...");
+      const { execSync } = await import("child_process");
+      execSync("node prisma/seed.js", { stdio: "inherit" });
+      console.log("[database] Initial demo data seeded.");
+    }
+  } catch (err) {
+    console.warn("[database] Auto-setup notice:", err.message);
+  }
+
   const app = createApp();
   const server = app.listen(config.PORT, () => {
     console.log(`\n======================================================`);
