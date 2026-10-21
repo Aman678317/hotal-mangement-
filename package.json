@@ -8,6 +8,8 @@
     "node": ">=20"
   },
   "scripts": {
+    "build": "prisma generate",
+    "postinstall": "prisma generate",
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
     "test": "node --test --test-concurrency=1 tests/api/",

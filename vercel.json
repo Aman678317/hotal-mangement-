@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/student/:path*",
+      "destination": "/student/:path*.html"
+    },
+    {
+      "source": "/warden/:path*",
+      "destination": "/warden/:path*.html"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/admin/:path*.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/register.html"
+    }
+  ]
+}
