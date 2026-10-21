@@ -6,11 +6,6 @@
   "engines": {
     "node": ">=20"
   },
-  "allowScripts": {
-    "@prisma/client": true,
-    "@prisma/engines": true,
-    "prisma": true
-  },
   "scripts": {
     "build": "prisma generate",
     "postinstall": "prisma generate",

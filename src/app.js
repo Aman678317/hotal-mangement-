@@ -75,6 +75,9 @@ export function createApp() {
   app.use("/api", notFoundHandler);
 
   /* Static frontend (multi-page app) */
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+  });
   app.use(express.static(path.join(__dirname, "..", "public"), { extensions: ["html"] }));
 
   /* Friendly 404 for unknown pages */
