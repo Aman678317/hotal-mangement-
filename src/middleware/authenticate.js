@@ -73,14 +73,26 @@ export function sameOriginGuard(req, res, next) {
 
   const origin = req.headers.origin || (req.headers.referer ? new URL(req.headers.referer).origin : null);
   if (origin) {
-    const expected = new URL(config.APP_BASE_URL).origin;
-    // In dev, also allow localhost on any port to keep local workflows simple.
-    const originUrl = new URL(origin);
-    const allowed =
-      origin === expected ||
-      (config.NODE_ENV !== "production" && originUrl.hostname === "localhost");
-    if (!allowed) {
+    try {
+      const originUrl = new URL(origin);
+      const host = req.headers["x-forwarded-host"] || req.headers.host;
+      let expectedOrigin = null;
+      try {
+        expectedOrigin = config.APP_BASE_URL ? new URL(config.APP_BASE_URL).origin : null;
+      } catch {}
+
+      const isMatchingHost = host && (originUrl.host === host || originUrl.host.split(":")[0] === host.split(":")[0]);
+      const isMatchingExpected = expectedOrigin && origin === expectedOrigin;
+      const isLocalhost = originUrl.hostname === "localhost" || originUrl.hostname === "127.0.0.1";
+      const isVercel = originUrl.hostname.endsWith(".vercel.app");
+
+      if (isMatchingHost || isMatchingExpected || isLocalhost || isVercel) {
+        return next();
+      }
+
       return next(ApiError.forbidden("CSRF_REJECTED", "Cross-origin request rejected."));
+    } catch {
+      return next(ApiError.forbidden("CSRF_REJECTED", "Invalid origin header."));
     }
   }
   next();
