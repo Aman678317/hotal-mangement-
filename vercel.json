@@ -1,70 +1,12 @@
 {
   "version": 2,
+  "outputDirectory": "public",
   "cleanUrls": true,
+  "buildCommand": "npm run build",
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/api"
-    },
-    {
-      "source": "/student/dashboard",
-      "destination": "/student/dashboard.html"
-    },
-    {
-      "source": "/student/rooms",
-      "destination": "/student/rooms.html"
-    },
-    {
-      "source": "/student/allocation",
-      "destination": "/student/allocation.html"
-    },
-    {
-      "source": "/student/complaints",
-      "destination": "/student/complaints.html"
-    },
-    {
-      "source": "/student/profile",
-      "destination": "/student/profile.html"
-    },
-    {
-      "source": "/warden/dashboard",
-      "destination": "/warden/dashboard.html"
-    },
-    {
-      "source": "/warden/rooms",
-      "destination": "/warden/rooms.html"
-    },
-    {
-      "source": "/warden/allocations",
-      "destination": "/warden/allocations.html"
-    },
-    {
-      "source": "/warden/complaints",
-      "destination": "/warden/complaints.html"
-    },
-    {
-      "source": "/admin/dashboard",
-      "destination": "/admin/dashboard.html"
-    },
-    {
-      "source": "/admin/users",
-      "destination": "/admin/users.html"
-    },
-    {
-      "source": "/admin/reports",
-      "destination": "/admin/reports.html"
-    },
-    {
-      "source": "/admin/settings",
-      "destination": "/admin/settings.html"
-    },
-    {
-      "source": "/login",
-      "destination": "/login.html"
-    },
-    {
-      "source": "/register",
-      "destination": "/register.html"
     }
   ]
 }
