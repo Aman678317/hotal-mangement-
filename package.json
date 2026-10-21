@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Hostel Management System — college mini-project. HTML/CSS/JS frontend, Node.js + Express API, PostgreSQL + Prisma, rule-based help chatbot.",
   "type": "module",
-  "main": "src/server.js",
   "engines": {
     "node": ">=20"
   },

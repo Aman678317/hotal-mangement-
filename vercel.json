@@ -4,83 +4,67 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.js"
-    },
-    {
-      "source": "/",
-      "destination": "/public/index.html"
-    },
-    {
-      "source": "/login",
-      "destination": "/public/login.html"
-    },
-    {
-      "source": "/register",
-      "destination": "/public/register.html"
+      "destination": "/api"
     },
     {
       "source": "/student/dashboard",
-      "destination": "/public/student/dashboard.html"
+      "destination": "/student/dashboard.html"
     },
     {
       "source": "/student/rooms",
-      "destination": "/public/student/rooms.html"
+      "destination": "/student/rooms.html"
     },
     {
       "source": "/student/allocation",
-      "destination": "/public/student/allocation.html"
+      "destination": "/student/allocation.html"
     },
     {
       "source": "/student/complaints",
-      "destination": "/public/student/complaints.html"
+      "destination": "/student/complaints.html"
     },
     {
       "source": "/student/profile",
-      "destination": "/public/student/profile.html"
+      "destination": "/student/profile.html"
     },
     {
       "source": "/warden/dashboard",
-      "destination": "/public/warden/dashboard.html"
+      "destination": "/warden/dashboard.html"
     },
     {
       "source": "/warden/rooms",
-      "destination": "/public/warden/rooms.html"
+      "destination": "/warden/rooms.html"
     },
     {
       "source": "/warden/allocations",
-      "destination": "/public/warden/allocations.html"
+      "destination": "/warden/allocations.html"
     },
     {
       "source": "/warden/complaints",
-      "destination": "/public/warden/complaints.html"
+      "destination": "/warden/complaints.html"
     },
     {
       "source": "/admin/dashboard",
-      "destination": "/public/admin/dashboard.html"
+      "destination": "/admin/dashboard.html"
     },
     {
       "source": "/admin/users",
-      "destination": "/public/admin/users.html"
+      "destination": "/admin/users.html"
     },
     {
       "source": "/admin/reports",
-      "destination": "/public/admin/reports.html"
+      "destination": "/admin/reports.html"
     },
     {
       "source": "/admin/settings",
-      "destination": "/public/admin/settings.html"
+      "destination": "/admin/settings.html"
     },
     {
-      "source": "/css/:path*",
-      "destination": "/public/css/:path*"
+      "source": "/login",
+      "destination": "/login.html"
     },
     {
-      "source": "/js/:path*",
-      "destination": "/public/js/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/public/$1"
+      "source": "/register",
+      "destination": "/register.html"
     }
   ]
 }
