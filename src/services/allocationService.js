@@ -212,9 +212,10 @@ export async function getAllocation(id, viewer) {
  * blocks on the lock, then sees the updated occupancy and fails safely.
  */
 async function lockRoomAndCheckCapacity(tx, roomId, excludeAllocationId = null) {
-  const locked = await tx.$queryRaw`
-    SELECT id, capacity, status FROM "rooms" WHERE id = ${roomId} FOR UPDATE
-  `;
+  const locked = await tx.$queryRawUnsafe(
+    `SELECT id, capacity, status FROM "rooms" WHERE id = $1 FOR UPDATE`,
+    roomId
+  );
   if (locked.length === 0) {
     throw ApiError.notFound("ROOM_NOT_FOUND", "Room not found.");
   }

@@ -55,7 +55,7 @@ export function createApp() {
   /* Health check — verifies the real PostgreSQL connection, never lies. */
   app.get("/api/health", async (req, res) => {
     try {
-      await prisma.$queryRaw`SELECT 1`;
+      await prisma.$queryRawUnsafe("SELECT 1");
       res.json({ status: "ok", database: "connected", time: new Date().toISOString() });
     } catch {
       res.status(503).json({ status: "error", database: "unreachable", time: new Date().toISOString() });

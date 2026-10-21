@@ -10,8 +10,9 @@ node_modules/
 *.log
 logs/
 
-# prisma generated client
+# prisma generated client & local embedded postgres data
 prisma/generated/
+prisma/pgdata/
 
 # coverage / test artifacts
 coverage/

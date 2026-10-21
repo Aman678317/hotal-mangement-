@@ -8,7 +8,7 @@ export const prisma = new PrismaClient({
 /** Fail fast at startup if the database is unreachable. */
 export async function assertDatabaseReachable() {
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    await prisma.$queryRawUnsafe("SELECT 1");
   } catch (err) {
     console.error("\n[database] Cannot reach PostgreSQL at the configured DATABASE_URL.");
     console.error(`[database] Reason: ${err.message}`);

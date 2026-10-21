@@ -8,7 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "node --watch src/server.js",
     "start": "node src/server.js",
     "test": "node --test --test-concurrency=1 tests/api/",
     "test:api": "node --test tests/api/",
@@ -22,6 +22,8 @@
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@electric-sql/pglite-socket": "^0.2.14",
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.5",
