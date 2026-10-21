@@ -89,3 +89,5 @@ export function createApp() {
 }
 
 export { config };
+export const app = createApp();
+export default app;

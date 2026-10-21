@@ -41,7 +41,9 @@ async function main() {
   process.on("SIGTERM", () => shutdown("SIGTERM"));
 }
 
-main().catch((err) => {
-  console.error("[server] Failed to start:", err.message);
-  process.exit(1);
-});
+if (process.env.VERCEL !== "1") {
+  main().catch((err) => {
+    console.error("[server] Failed to start:", err.message);
+    process.exit(1);
+  });
+}
