@@ -7,24 +7,80 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/student/:path*",
-      "destination": "/student/:path*.html"
-    },
-    {
-      "source": "/warden/:path*",
-      "destination": "/warden/:path*.html"
-    },
-    {
-      "source": "/admin/:path*",
-      "destination": "/admin/:path*.html"
+      "source": "/",
+      "destination": "/public/index.html"
     },
     {
       "source": "/login",
-      "destination": "/login.html"
+      "destination": "/public/login.html"
     },
     {
       "source": "/register",
-      "destination": "/register.html"
+      "destination": "/public/register.html"
+    },
+    {
+      "source": "/student/dashboard",
+      "destination": "/public/student/dashboard.html"
+    },
+    {
+      "source": "/student/rooms",
+      "destination": "/public/student/rooms.html"
+    },
+    {
+      "source": "/student/allocation",
+      "destination": "/public/student/allocation.html"
+    },
+    {
+      "source": "/student/complaints",
+      "destination": "/public/student/complaints.html"
+    },
+    {
+      "source": "/student/profile",
+      "destination": "/public/student/profile.html"
+    },
+    {
+      "source": "/warden/dashboard",
+      "destination": "/public/warden/dashboard.html"
+    },
+    {
+      "source": "/warden/rooms",
+      "destination": "/public/warden/rooms.html"
+    },
+    {
+      "source": "/warden/allocations",
+      "destination": "/public/warden/allocations.html"
+    },
+    {
+      "source": "/warden/complaints",
+      "destination": "/public/warden/complaints.html"
+    },
+    {
+      "source": "/admin/dashboard",
+      "destination": "/public/admin/dashboard.html"
+    },
+    {
+      "source": "/admin/users",
+      "destination": "/public/admin/users.html"
+    },
+    {
+      "source": "/admin/reports",
+      "destination": "/public/admin/reports.html"
+    },
+    {
+      "source": "/admin/settings",
+      "destination": "/public/admin/settings.html"
+    },
+    {
+      "source": "/css/:path*",
+      "destination": "/public/css/:path*"
+    },
+    {
+      "source": "/js/:path*",
+      "destination": "/public/js/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
     }
   ]
 }

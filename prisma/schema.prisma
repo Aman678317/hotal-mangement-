@@ -2,7 +2,8 @@
 // PostgreSQL. UUID string primary keys, enums for statuses, timestamps on mutable records.
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
