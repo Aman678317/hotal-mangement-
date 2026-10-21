@@ -50,14 +50,18 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn">Sign in</button>
       </form>
 
-      <p class="auth-alt" id="register-alt" hidden>
+      <p class="auth-alt" id="register-alt">
         New student? <a href="/register.html">Create your account</a>
       </p>
 
-      <div class="demo-hint" id="demo-hint" hidden>
-        <strong>Development demo accounts</strong> (fake seeded data):<br>
-        Student <code>student@hostel.local</code> · Warden <code>warden@hostel.local</code> ·
-        Admin <code>admin@hostel.local</code> — password <code>Demo@1234</code>
+      <div class="demo-box" style="margin-top: 1.5rem; padding: 1rem; border-radius: var(--radius-md, 8px); background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2);">
+        <p style="margin: 0 0 0.6rem; font-size: 0.85rem; font-weight: 600; color: var(--color-text, #333);">🚀 1-Click Demo Login:</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-student">🎓 Student Demo</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-warden">🛡️ Warden Demo</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-admin">⚙️ Admin Demo</button>
+        </div>
+        <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: var(--color-text-muted, #666);">Password: <code>Demo@1234</code></p>
       </div>
     </div>
   </div>

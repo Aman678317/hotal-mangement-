@@ -23,11 +23,23 @@ getSession().then((user) => {
   if (user) window.location.replace(homeForRole(user.role));
 });
 
-// Show demo hint / registration link only when the server says they're enabled.
-api("/auth/config").then((cfg) => {
-  if (cfg?.seedDemoUsers) document.getElementById("demo-hint").hidden = false;
-  if (cfg?.allowSelfRegistration) document.getElementById("register-alt").hidden = false;
-}).catch(() => { /* non-fatal */ });
+function fillAndSubmit(email, pass) {
+  identifierEl.value = email;
+  passwordEl.value = pass;
+  form.dispatchEvent(new Event("submit", { cancelable: true }));
+}
+
+document.getElementById("btn-demo-student")?.addEventListener("click", () => {
+  fillAndSubmit("student@hostel.local", "Demo@1234");
+});
+
+document.getElementById("btn-demo-warden")?.addEventListener("click", () => {
+  fillAndSubmit("warden@hostel.local", "Demo@1234");
+});
+
+document.getElementById("btn-demo-admin")?.addEventListener("click", () => {
+  fillAndSubmit("admin@hostel.local", "Demo@1234");
+});
 
 // Signed-out notice
 if (new URLSearchParams(location.search).get("signedout") === "1") {

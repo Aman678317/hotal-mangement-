@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { config } from "../config/index.js";
 import { prisma } from "../utils/prisma.js";
 import { ApiError } from "../utils/ApiError.js";
+import { findMockUserById } from "../utils/mockStore.js";
 
 export const COOKIE_NAME = "hms_session";
 
@@ -40,14 +41,23 @@ export async function authenticate(req, res, next) {
       throw ApiError.unauthorized("SESSION_EXPIRED", "Your session has expired. Please sign in again.");
     }
 
-    const user = await prisma.user.findUnique({
-      where: { id: payload.sub },
-      select: {
-        id: true, fullName: true, email: true, studentId: true, phone: true,
-        emergencyContactName: true, emergencyContactPhone: true, course: true,
-        yearOfStudy: true, role: true, isActive: true, createdAt: true,
-      },
-    });
+    let user = null;
+    try {
+      user = await prisma.user.findUnique({
+        where: { id: payload.sub },
+        select: {
+          id: true, fullName: true, email: true, studentId: true, phone: true,
+          emergencyContactName: true, emergencyContactPhone: true, course: true,
+          yearOfStudy: true, role: true, isActive: true, createdAt: true,
+        },
+      });
+    } catch {
+      // Database not connected — fallback to mock store
+    }
+
+    if (!user) {
+      user = findMockUserById(payload.sub);
+    }
 
     if (!user || !user.isActive) {
       // Clear stale cookie and reject

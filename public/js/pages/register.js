@@ -31,6 +31,20 @@ api("/auth/config").then((cfg) => {
   }
 }).catch(() => {});
 
+document.getElementById("btn-autofill")?.addEventListener("click", () => {
+  const rand = Math.floor(100 + Math.random() * 900);
+  byName.fullName.el.value = "Aman Shandilya";
+  byName.email.el.value = `student${rand}@hostel.local`;
+  byName.studentId.el.value = `STU-2024-${rand}`;
+  byName.course.el.value = "B.Tech CSE";
+  byName.yearOfStudy.el.value = "2";
+  byName.phone.el.value = "+91-9852102764";
+  byName.password.el.value = "Demo@1234";
+  byName.confirmPassword.el.value = "Demo@1234";
+  hideBanner(banner);
+  fields.forEach((f) => setFieldError(f, null));
+});
+
 function clientValidate() {
   let ok = true;
   const v = (name, cond, msg) => {
