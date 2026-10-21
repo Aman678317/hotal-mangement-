@@ -74,11 +74,29 @@ export function createApp() {
 
   app.use("/api", notFoundHandler);
 
+  const publicDir = path.join(__dirname, "..", "public");
+
   /* Static frontend (multi-page app) */
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+  app.get("/", (req, res) => res.sendFile(path.join(publicDir, "index.html")));
+  app.get("/login", (req, res) => res.sendFile(path.join(publicDir, "login.html")));
+  app.get("/register", (req, res) => res.sendFile(path.join(publicDir, "register.html")));
+
+  app.get("/student/:page", (req, res, next) => {
+    const file = path.join(publicDir, "student", `${req.params.page}.html`);
+    res.sendFile(file, (err) => (err ? next() : null));
   });
-  app.use(express.static(path.join(__dirname, "..", "public"), { extensions: ["html"] }));
+
+  app.get("/warden/:page", (req, res, next) => {
+    const file = path.join(publicDir, "warden", `${req.params.page}.html`);
+    res.sendFile(file, (err) => (err ? next() : null));
+  });
+
+  app.get("/admin/:page", (req, res, next) => {
+    const file = path.join(publicDir, "admin", `${req.params.page}.html`);
+    res.sendFile(file, (err) => (err ? next() : null));
+  });
+
+  app.use(express.static(publicDir, { extensions: ["html"] }));
 
   /* Friendly 404 for unknown pages */
   app.use((req, res) => {
